@@ -8,7 +8,7 @@ double MonteCarloPricer::price(int paths) const {
     double payoff_sum = 0.0;
 
     for (int i = 0; i < paths; ++i) {
-        auto path = simulator.simulate_path();   // std::vector<double>
+        auto path = simulator.simulate_path();  
         payoff_sum += option.payoff(path);
     }
 
@@ -19,8 +19,8 @@ double MonteCarloPricer::price_path_dependent(const Option& opt, int paths) cons
     double payoff_sum = 0.0;
 
     for (int i = 0; i < paths; ++i) {
-        auto path = simulator.simulate_path();   // std::vector<double>
-        payoff_sum += opt.payoff(path);          // can be BarrierOption
+        auto path = simulator.simulate_path();   
+        payoff_sum += opt.payoff(path);     
     }
 
     return std::exp(-r * T) * (payoff_sum / paths);
